@@ -15,13 +15,8 @@ class NegociacaoController {
     }
 
     negociacao() {
-        let date = new Date(
-            ...this._inputData.value
-                .split('-')
-                .map((val, idx) => idx === 1 ? val - 1 : val));
-
         return new Negociacao(
-            date,
+            DateHelper.textoParaData(this._inputData.value),
             this._inputQuantidade.value,
             this._inputValor.value
         );
