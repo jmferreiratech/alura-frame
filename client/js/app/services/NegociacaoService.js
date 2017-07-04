@@ -1,59 +1,33 @@
 class NegociacaoService {
 
+    constructor() {
+        this._http = new HttpService();
+    }
+
     obterNegociacoesDaSemana() {
-        return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'negociacoes/semana');
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        resolve(JSON.parse(xhr.response)
-                            .map(i => new Negociacao(new Date(i.data), i.quantidade, i.valor)));
-                    } else {
-                        reject("Erro ao importar negociações da semana");
-                        console.log(xhr.responseText);
-                    }
-                }
-            };
-            xhr.send();
-        });
+        return this._http.get('negociacoes/semana')
+            .then(negociacoes => negociacoes.map(i => new Negociacao(new Date(i.data), i.quantidade, i.valor)))
+            .catch(erro => {
+                console.log(erro);
+                throw new Error('Erro ao importar negociações da semana');
+            });
     }
 
     obterNegociacoesDaSemanaAnterior() {
-        return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'negociacoes/anterior');
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        resolve(JSON.parse(xhr.response)
-                            .map(i => new Negociacao(new Date(i.data), i.quantidade, i.valor)));
-                    } else {
-                        reject("Erro ao importar negociações da semana anterior");
-                        console.log(xhr.responseText);
-                    }
-                }
-            };
-            xhr.send();
-        });
+        return this._http.get('negociacoes/anterior')
+            .then(negociacoes => negociacoes.map(i => new Negociacao(new Date(i.data), i.quantidade, i.valor)))
+            .catch(erro => {
+                console.log(erro);
+                throw new Error('Erro ao importar negociações da semana anterior');
+            });
     }
 
     obterNegociacoesDaSemanaTrasada() {
-        return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'negociacoes/retrasada');
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        resolve(JSON.parse(xhr.response)
-                            .map(i => new Negociacao(new Date(i.data), i.quantidade, i.valor)));
-                    } else {
-                        reject("Erro ao importar negociações da semana retrasada");
-                        console.log(xhr.responseText);
-                    }
-                }
-            };
-            xhr.send();
-        });
+        return this._http.get('negociacoes/retrasada')
+            .then(negociacoes => negociacoes.map(i => new Negociacao(new Date(i.data), i.quantidade, i.valor)))
+            .catch(erro => {
+                console.log(erro);
+                throw new Error('Erro ao importar negociações da semana retrasada');
+            });
     }
 }
