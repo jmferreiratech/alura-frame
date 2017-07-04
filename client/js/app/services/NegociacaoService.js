@@ -30,4 +30,13 @@ class NegociacaoService {
                 throw new Error('Erro ao importar negociações da semana retrasada');
             });
     }
+
+    obterNegociacoes() {
+        return Promise.all([
+            this.obterNegociacoesDaSemana(),
+            this.obterNegociacoesDaSemanaAnterior(),
+            this.obterNegociacoesDaSemanaTrasada(),
+        ]).then(results => results.reduce((flat, result) => flat.concat(result), []))
+        .catch(erro => {throw erro;});
+    }
 }
