@@ -19,4 +19,12 @@ class ListaNegociacoes {
     limpa() {
         this._listaNegociacoes = [];
     }
+
+    ordena(criterio) {
+        this._listaNegociacoes.sort(criterio);
+    }
+
+    inverteOrdem() {
+        this._listaNegociacoes.reverse();
+    }
 }
