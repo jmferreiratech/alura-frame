@@ -72,7 +72,7 @@ class NegociacaoService {
     importa(listaAtual) {
         return this.obterNegociacoes()
             .then(negociacoes => negociacoes
-                .filter(negociacao => !listaAtual.some(n => JSON.stringify(n) === JSON.stringify(negociacao))))
+                .filter(negociacao => !listaAtual.some(n => n.isEquals(negociacao))))
             .catch(erro => {
                 throw new Error(erro)
             });
