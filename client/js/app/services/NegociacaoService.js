@@ -39,4 +39,42 @@ class NegociacaoService {
         ]).then(results => results.reduce((flat, result) => flat.concat(result), []))
         .catch(erro => {throw erro;});
     }
+
+    cadastra(negociacao) {
+        return ConnectionFactory.getConnection()
+            .then(connection => new NegociacaoDao(connection))
+            .then(negociacaoDao => negociacaoDao.adiciona(negociacao))
+            .then(() => "Negociação adicionada com sucesso!")
+            .catch(erro => {
+                throw new Error(erro)
+            });
+    }
+
+    lista() {
+        return ConnectionFactory.getConnection()
+            .then(connection => new NegociacaoDao(connection))
+            .then(negociacaoDao => negociacaoDao.listaTodos())
+            .catch(erro => {
+                throw new Error(erro)
+            });
+    }
+
+    apaga() {
+        return ConnectionFactory.getConnection()
+            .then(connection => new NegociacaoDao(connection))
+            .then(negociacaoDao => negociacaoDao.apagaTodos())
+            .then(() => "Negociações apagadas com sucesso!")
+            .catch(erro => {
+                throw new Error(erro)
+            });
+    }
+
+    importa(listaAtual) {
+        return this.obterNegociacoes()
+            .then(negociacoes => negociacoes
+                .filter(negociacao => !listaAtual.some(n => JSON.stringify(n) === JSON.stringify(negociacao))))
+            .catch(erro => {
+                throw new Error(erro)
+            });
+    }
 }
