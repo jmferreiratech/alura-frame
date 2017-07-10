@@ -27,4 +27,3 @@ class Negociacao {
         return JSON.stringify(this) === JSON.stringify(that);
     }
 }
-//# sourceMappingURL=Negociacao.js.map

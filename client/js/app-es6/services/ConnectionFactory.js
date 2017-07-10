@@ -1,4 +1,4 @@
-const ConnectionFactory = function () {
+const ConnectionFactory = (function () {
     const stores = ['negociacoes'];
     const version = 1;
     const dbName = 'aluraframe';
@@ -38,8 +38,8 @@ const ConnectionFactory = function () {
             });
         }
 
-        static closeConnection() {
-            if (connection) {
+        static closeConnection(){
+            if(connection){
                 Reflect.apply(close, connection, []);
                 connection = null;
             }
@@ -47,10 +47,10 @@ const ConnectionFactory = function () {
 
         static _criaStores(connection) {
             stores.forEach(store => {
-                if (connection.objectStoreNames.contains(store)) connection.deleteObjectStore(store);
+                if (connection.objectStoreNames.contains(store))
+                    connection.deleteObjectStore(store);
                 connection.createObjectStore(store, { autoIncrement: true });
             });
         }
-    };
-}();
-//# sourceMappingURL=ConnectionFactory.js.map
+    }
+})();

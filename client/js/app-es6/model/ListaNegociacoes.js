@@ -28,4 +28,3 @@ class ListaNegociacoes {
         this._listaNegociacoes.reverse();
     }
 }
-//# sourceMappingURL=ListaNegociacoes.js.map

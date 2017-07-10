@@ -23,7 +23,6 @@ class ProxyFactory {
     }
 
     static isFunction(subject) {
-        return typeof subject === typeof Function;
+        return typeof(subject) === typeof(Function);
     }
 }
-//# sourceMappingURL=ProxyFactory.js.map

@@ -33,4 +33,3 @@ class NegociacoesView extends View {
         `;
     }
 }
-//# sourceMappingURL=NegociacoesView.js.map

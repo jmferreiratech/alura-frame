@@ -4,4 +4,3 @@ class MensagemView extends View {
         return model.texto ? `<p class="alert alert-info">${model.texto}</p>` : `<p></p>`;
     }
 }
-//# sourceMappingURL=MensagemView.js.map

@@ -12,4 +12,3 @@ class View {
         throw new Error("Method 'template' has to be overriden");
     }
 }
-//# sourceMappingURL=View.js.map
