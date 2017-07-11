@@ -1,4 +1,6 @@
-class NegociacaoDao {
+import {Negociacao} from "../model/Negociacao";
+
+export class NegociacaoDao {
     constructor(connection) {
         this._connection = connection;
         this._store = 'negociacoes';

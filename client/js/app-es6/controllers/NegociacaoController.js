@@ -1,3 +1,12 @@
+import {Negociacao} from "../model/Negociacao";
+import {ListaNegociacoes} from "../model/ListaNegociacoes";
+import {Mensagem} from "../model/Mensagem";
+import {NegociacoesView} from "../views/NegociacoesView";
+import {MensagemView} from "../views/MensagemView";
+import {NegociacaoService} from "../services/NegociacaoService";
+import {Bind} from "../helpers/Bind";
+import {DateHelper} from "../helpers/DateHelper";
+
 class NegociacaoController {
 
     constructor() {
@@ -88,4 +97,10 @@ class NegociacaoController {
 
         this._inputData.focus();
     }
+}
+
+const controller = new NegociacaoController();
+
+export function instance() {
+    return controller;
 }
