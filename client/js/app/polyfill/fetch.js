@@ -1,3 +1,5 @@
+'use strict';
+
 (function (self) {
   'use strict';
 
@@ -23,7 +25,7 @@
   if (support.arrayBuffer) {
     var viewClasses = ['[object Int8Array]', '[object Uint8Array]', '[object Uint8ClampedArray]', '[object Int16Array]', '[object Uint16Array]', '[object Int32Array]', '[object Uint32Array]', '[object Float32Array]', '[object Float64Array]'];
 
-    var isDataView = function (obj) {
+    var isDataView = function isDataView(obj) {
       return obj && DataView.prototype.isPrototypeOf(obj);
     };
 
@@ -52,7 +54,7 @@
   // Build a destructive iterator for the value list
   function iteratorFor(items) {
     var iterator = {
-      next: function () {
+      next: function next() {
         var value = items.shift();
         return { done: value === undefined, value: value };
       }
@@ -459,5 +461,5 @@
     });
   };
   self.fetch.polyfill = true;
-})(typeof self !== 'undefined' ? self : this);
+})(typeof self !== 'undefined' ? self : undefined);
 //# sourceMappingURL=fetch.js.map
